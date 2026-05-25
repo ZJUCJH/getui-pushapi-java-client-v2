@@ -1,5 +1,11 @@
 # Release Notes
 
+## 1.0.9.0
+
+### update
+
+* android厂商通道消息支持自定义消息
+
 ## 1.0.8.0
 
 ### update

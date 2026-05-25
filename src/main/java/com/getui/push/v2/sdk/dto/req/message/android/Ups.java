@@ -1,5 +1,7 @@
 package com.getui.push.v2.sdk.dto.req.message.android;
 
+import com.getui.push.v2.sdk.dto.req.message.UpsCustomBean;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,12 +9,13 @@ import java.util.Map;
  * Android厂商消息
  */
 public class Ups {
+
     /**
-     * 通知消息内容，与transmission 二选一，两个都填写时报错
+     * 通知消息内容，与transmission、custom、revoke四选一，都填写时报错。
      */
     private ThirdNotification notification;
     /**
-     * 透传消息内容，与notification 二选一，两个都填写时报错，长度 ≤ 3072
+     * 透传消息内容，与notification、custom、revoke四选一，都填写时报错，长度 ≤ 3072
      */
     private String transmission;
 
@@ -25,6 +28,11 @@ public class Ups {
      * 撤回消息时使用
      */
     private ThirdRevokeBean revoke;
+
+    /**
+     * 自定义消息内容，与notification、transmission、revoke四选一，都填写时报错。
+     */
+    private Map<String, UpsCustomBean> custom;
 
     public ThirdNotification getNotification() {
         return notification;
@@ -76,6 +84,14 @@ public class Ups {
         this.revoke = revoke;
     }
 
+    public Map<String, UpsCustomBean> getCustom() {
+        return custom;
+    }
+
+    public void setCustom(Map<String, UpsCustomBean> custom) {
+        this.custom = custom;
+    }
+
     @Override
     public String toString() {
         return "Ups{" +
@@ -83,6 +99,8 @@ public class Ups {
                 ", transmission='" + transmission + '\'' +
                 ", options=" + options +
                 ", revoke=" + revoke +
+                ", custom=" + custom +
                 '}';
     }
+
 }
